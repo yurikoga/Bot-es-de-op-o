@@ -1,0 +1,117 @@
+:root {
+    --bg-main: #f5f5f5;
+    --dark-bg: #333333;
+    --border-color: #e0e0e0;
+    --text-dark: #333333;
+    --white: #ffffff;
+}
+
+body {
+    background-color: #3b82f6; /* Azul do fundo do seu print */
+    font-family: 'Poppins', sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+}
+
+.selection-card {
+    background: var(--white);
+    width: 350px;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+}
+
+.card-header {
+    background: var(--dark-bg);
+    color: var(--white);
+    padding: 20px;
+    text-align: center;
+}
+
+.card-header h2 {
+    margin: 0;
+    font-size: 1.5rem;
+    font-weight: 600;
+}
+
+.card-body {
+    padding: 25px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+/* Esconde o Radio Original */
+.option-item input {
+    display: none;
+}
+
+/* Label como container clicável */
+.option-item {
+    display: flex;
+    align-items: center;
+    padding: 12px 20px;
+    border: 1.5px solid var(--border-color);
+    border-radius: 50px; /* Bordas bem arredondadas conforme o print */
+    cursor: pointer;
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+.label-text {
+    font-size: 1.1rem;
+    color: var(--text-dark);
+    font-weight: 500;
+    margin-left: 15px;
+}
+
+/* Círculo do Radio Customizado */
+.custom-radio {
+    width: 22px;
+    height: 22px;
+    border-radius: 50%;
+    background: #d1d1d1;
+    position: relative;
+    transition: all 0.3s ease;
+}
+
+/* --- ESTADO SELECIONADO --- */
+
+/* Fundo escuro para a label */
+.option-item:has(input:checked) {
+    background: var(--dark-bg);
+    border-color: var(--dark-bg);
+}
+
+/* Texto branco quando selecionado */
+.option-item input:checked ~ .label-text {
+    color: var(--white);
+}
+
+/* Círculo preto com borda branca quando selecionado */
+.option-item input:checked ~ .custom-radio {
+    background: var(--dark-bg);
+    border: 2px solid var(--white);
+}
+
+/* O ponto branco central */
+.option-item input:checked ~ .custom-radio::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 8px;
+    height: 8px;
+    background: var(--white);
+    border-radius: 50%;
+}
+
+/* Efeito de Hover */
+.option-item:hover:not(:has(input:checked)) {
+    background: #f9f9f9;
+    border-color: #ccc;
+}
